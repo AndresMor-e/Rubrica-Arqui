@@ -1,5 +1,5 @@
 // ── CONFIGURACIÓN ──
-const API_BASE_URL = 'http://localhost:3000/api/rest/v1';
+const API_BASE_URL = 'https://rubrica-arqui.onrender.com/api/rest/v1';
 const ADMIN = "admin";
 
 // ── FUNCIÓN SB ──
