@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MindChat</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<link rel="icon" href="assets/icons/chat.png" type="image/x-icon" />
+<link rel="stylesheet" href="assets/styles/estilos.css">
+</head>
+<body>
+
+<div id="splash-screen">
+  <div class="splash-content">
+    <div class="splash-logo">MindChat</div>
+    <div class="splash-tagline">Un espacio donde el usuario escribe cómo se siente </div>
+    <div class="splash-bar-wrap"><div class="splash-bar-fill"></div></div>
+    <div class="splash-perc">0%</div>
+  </div>
+  <div class="splash-bg-orb splash-orb-1"></div>
+  <div class="splash-bg-orb splash-orb-2"></div>
+</div>
+
+<div id="login-screen" style="display:none;">
+  <div class="login-card">
+    <div class="login-logo">MindChat</div>
+    <div class="login-tagline">Un espacio donde el usuario escribe cómo se siente </div>
+    <div class="input-group"><input id="user" placeholder="Nombre de usuario" autocomplete="off"></div>
+    <div class="input-group"><input id="pass" type="password" placeholder="Contraseña"></div>
+    <button class="btn-primary" onclick="login()">Iniciar sesión</button>
+    <div class="login-divider">¿No tienes cuenta?</div>
+    <button class="btn-secondary" onclick="registro()">Crear cuenta</button>
+  </div>
+</div>
+
+<div id="app" style="display:none;">
+  <div id="sidebar">
+    <div class="sidebar-header">
+      <div class="app-brand">MindChat</div>
+      <div class="user-badge">
+        <div class="avatar" id="avatar-letter">?</div>
+        <div class="user-badge-name" id="usuario-label">—</div>
+        <span id="admin-badge-el" class="admin-badge" style="display:none;">admin</span>
+        <div class="online-dot"></div>
+        <button class="btn-logout" onclick="cerrarSesion()">⏻</button>
+      </div>
+    </div>
+    <div class="search-wrap"><div></div></div>
+    <div id="sidebar-scroll">
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Canales</div>
+        <div id="canales-list"></div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Mensajes directos <span class="online-count-badge" id="online-count">0 en línea</span></div>
+        <div id="directos-list"></div>
+      </div>
+    </div>
+  </div>
+  <div id="chat">
+    <div id="chat-header">
+      <div class="chat-header-avatar" id="chat-icon">🌍</div>
+      <div class="chat-header-info">
+        <div class="chat-header-name" id="chat-nombre">Chat Global</div>
+        <div class="chat-header-status" id="chat-status">● En línea</div>
+      </div>
+      <div class="chat-header-actions">
+        <button class="btn-header-action" onclick="toggleParticipants()">👥</button>
+      </div>
+    </div>
+    <div id="participants-panel"><div class="participants-title">Participantes</div><div id="participants-list"></div></div>
+    <div id="mensajes"><div class="empty-state"><div class="empty-text">No hay mensajes aún. ¡Sé el primero!</div></div></div>
+    <div id="input-area">
+      <div id="emoji-picker">
+        <div class="emoji-picker-header"><span class="emoji-picker-title">Emojis</span><button class="emoji-picker-close" onclick="toggleEmoji()">✕</button></div>
+        <input id="emoji-search" class="emoji-search" placeholder="🔍 Buscar emoji...">
+        <div id="emoji-cats" class="emoji-cats"></div>
+        <div id="emoji-grid" class="emoji-grid"></div>
+      </div>
+      <button id="btn-emoji" onclick="toggleEmoji()">😊</button>
+      <input id="mensaje" placeholder="Escribe un mensaje...">
+      <button id="btn-send" onclick="enviar()">
+        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
